@@ -1,0 +1,33 @@
+public class VowelConsonantPairs {
+    
+    public static int countVowelConsonantPairs(String password) {
+        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
+        int count = 0;
+        
+        boolean vFound = false, cFound = false;
+        
+        for (char p : password.toCharArray()) {
+            if (isVowel(p, vowels)) {
+                vFound = true;
+            } else {
+                cFound = true;
+            }
+            if (vFound && cFound) {
+                count++;
+                vFound = false;
+                cFound = false;
+            }
+        }
+        
+        return count;
+    }
+    
+    private static boolean isVowel(char c, char[] vowels) {
+        for (char v : vowels) {
+            if (c == v) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
